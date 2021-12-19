@@ -1,0 +1,19 @@
+.goodValue,
+.totalValue,
+.positiveValue {
+  text-transform: capitalize;
+  list-style: none;
+  font-size: 20px;
+  color: #000080;
+  margin-bottom: 7px;
+}
+
+.totalValue,
+.positiveValue {
+  font-weight: 500;
+  font: 22px;
+  text-shadow: 5px 5px 10px #87ceeb;
+}
+.statistics {
+  text-align: center;
+}

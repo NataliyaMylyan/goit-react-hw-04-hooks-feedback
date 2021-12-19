@@ -1,0 +1,34 @@
+.button {
+  width: 100px;
+  height: 55px;
+  font-size: 22px;
+  color: #000080;
+  margin-right: 25px;
+  border-radius: 5px;
+  background-color: #f0f8ff;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #6495ed;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.button:hover {
+  background-color: #6495ed;
+  border: 2px solid #87cefa;
+  color: #f8f8ff;
+}
+.button:nth-child(-n + 3):hover {
+  cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/happy.png"),
+    auto;
+}
+.button:nth-child(2n + 1):hover {
+  cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/meh.png"), auto;
+}
+.button:last-child:hover {
+  cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/sad.png"), auto;
+}
+.button:active {
+  background-color: #6495ed;
+  box-shadow: 0 5px #666;
+  transform: translateY(3px);
+}
