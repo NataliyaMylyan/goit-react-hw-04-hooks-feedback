@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Statistics from "../Statistics/Statistics.jsx";
 import FeedbackOptions from "../Feedback/FeedbackOptions.jsx";
 import Section from "../Section/Section.jsx";
@@ -13,8 +13,6 @@ const initialState = {
 
 const App = () => {
   const [state, setState] = useState(initialState);
-  const [total, setTotal] = useState(0);
-  const [percentage, setPercentage] = useState(0);
 
   const handleBtnClick = (event) => {
     const { innerText } = event.target;
@@ -24,17 +22,20 @@ const App = () => {
     }));
   };
 
-  useEffect(() => {
-    const newTotal = Object.values(state).reduce(
-      (acc, value) => acc + value,
-      0
-    );
-    setTotal(newTotal);
-    if (newTotal) setPercentage(Math.round((state.good * 100) / newTotal));
-  }, [state]);
+  const totalFeedback = () => {
+    return Object.values(state).reduce((acc, value) => acc + value, 0);
+  };
+
+  const positivePercentage = () => {
+    const total = totalFeedback();
+    const percentage = Math.round((state.good * 100) / total);
+    return total ? percentage : 0;
+  };
 
   const statistics = Object.entries(state);
   const options = Object.keys(state);
+  const total = totalFeedback();
+  const percentage = positivePercentage();
 
   return (
     <div className={s.container}>
@@ -42,7 +43,7 @@ const App = () => {
         <FeedbackOptions options={options} onLeaveFeedback={handleBtnClick} />
       </Section>
       <Section title="Statistics">
-        {!!total && (
+        {total > 0 && (
           <Statistics
             statistics={statistics}
             total={total}
